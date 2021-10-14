@@ -17,8 +17,11 @@ var express     = require("express"),
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
+
+//Mongo URL
+var dbURL = process.env.DB_URL || mongodb://localhost/yelp_camp_v1;
     
-mongoose.connect("mongodb://localhost/yelp_camp_v1");
+mongoose.connect(dbURL);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
